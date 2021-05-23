@@ -1,0 +1,9 @@
+#folders
+.idea
+dataset
+src_train_model/plots_logs/train
+src_train_model/plots_logs/validation
+#files
+nohup.out
+checkpoints/*.h5
+src_train_model/plots_logs/*.csv
