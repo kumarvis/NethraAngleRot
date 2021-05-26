@@ -7,3 +7,4 @@ src_train_model/plots_logs/validation
 nohup.out
 checkpoints/*.h5
 src_train_model/plots_logs/*.csv
+run_inference/*.h5

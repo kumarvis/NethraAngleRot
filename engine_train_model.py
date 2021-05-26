@@ -12,7 +12,7 @@ Train_dir = '/home/shunya/PythonProjects/NethraAngleRot/dataset/train'
 train_file_names = get_files_list(Train_dir, 'jpg')
 
 Valid_dir = '/home/shunya/PythonProjects/NethraAngleRot/dataset/validation'
-validation_file_names = get_files_list(Train_dir, 'jpg')
+validation_file_names = get_files_list(Valid_dir, 'jpg')
 
 ## Get model
 custom_model = get_custom_model()

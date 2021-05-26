@@ -19,6 +19,11 @@ def create_network():
         base_model = tf.keras.applications.MobileNetV2(
             include_top=False, weights='imagenet', input_shape=input_shape)
 
+    #for layer in base_model.layers:
+        #layer.trainable = False
+    #for layer in base_model.layers[-26:]:
+        #layer.trainable = True
+
     x = base_model.output
     x = Flatten()(x)
     final_output = Dense(num_classes, activation='softmax')(x)

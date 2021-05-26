@@ -196,8 +196,8 @@ def crop_largest_rectangle(image, angle, height, width):
     )
 
 
-def generate_rotated_image(ref_image, image, angle, size=None, crop_center=False,
-                           crop_largest_rect=False):
+def generate_rotated_image(image, angle, size=None, crop_center=False,
+                           crop_largest_rect=False, is_line_draw=False):
     """
     Generate a valid rotated image for the RotNetDataGenerator. If the
     image is rectangular, the crop_center option should be used to make
@@ -218,12 +218,33 @@ def generate_rotated_image(ref_image, image, angle, size=None, crop_center=False
         image = crop_largest_rectangle(image, angle, height, width)
 
     if size:
-        ref_image = cv2.resize(ref_image, size)
+        #ref_image = cv2.resize(ref_image, size)
         image = cv2.resize(image, size)
-        concat_img = cv2.hconcat([ref_image, image])
-        concat_img = cv2.resize(concat_img, size)
+        start_points = [(54, 0), (108, 0), (162, 0), (0, 54), (0, 108), (0, 162)]
+        end_points = [(54, 223), (108, 223), (162, 223), (223, 54), (223, 108), (223, 162)]
 
-    return concat_img
+        #start_points = [(74, 0), (148, 0), (0, 74), (0, 148)]
+        #end_points = [(74, 223), (148, 223), (223, 74), (223, 148)]
+
+        color = (0, 0, 0)
+        thickness = 1
+        ##drawing ref image
+        #ref_image = cv2.line(ref_image, start_vpoint, end_vpoint, color, thickness)
+        #ref_image = cv2.line(ref_image, start_hpoint, end_hpoint, color, thickness)
+        ## drawing image
+        if is_line_draw:
+            for index, item in enumerate(start_points):
+                pt1 = start_points[index]
+                pt2 = end_points[index]
+                image = cv2.line(image, pt1, pt2, color, thickness)
+
+
+
+
+        #concat_img = cv2.hconcat([ref_image, image])
+        #concat_img = cv2.resize(concat_img, size)
+
+    return image
 
 
 class RotNetDataGenerator(Iterator):
@@ -307,8 +328,8 @@ class RotNetDataGenerator(Iterator):
             if is_color:
                 rotated_image = cv2.cvtColor(rotated_image, cv2.COLOR_BGR2RGB)
 
-            img_name = str(random.randint(0, 100)) + '.png'
-            cv2.imwrite(img_name, rotated_image)
+            #img_name = str(random.randint(0, 100)) + '.png'
+            #cv2.imwrite(img_name, rotated_image)
 
             # add dimension to account for the channels if the image is greyscale
             if rotated_image.ndim == 2:

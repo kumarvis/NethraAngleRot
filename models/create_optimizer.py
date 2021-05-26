@@ -25,7 +25,7 @@ def create_optimizer(learning_rate):
           momentum=0.9,
           name="Momentum")
     elif ConfigObj.optimizer == "rmsprop":
-      optimizer = tf.keras.optimizers.RMSProp(
+      optimizer = tf.keras.optimizers.RMSprop(
           learning_rate=learning_rate)
     elif ConfigObj.optimizer == "sgd":
       optimizer = tf.keras.optimizers.GradientDescent(
