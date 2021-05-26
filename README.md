@@ -12,8 +12,10 @@
 
 1. conda activate (env_name)
 2. cd run_inference
-3. python3 (path to model wts) (path to img) [**If we are sure img1 is at ZERO angle**]
-4. python3 (path to model wts) (path to img1) (path to img2)
+3. python3 predict_angle.py (path to model wts) (path to img) [**If we are sure img1 is at ZERO angle**]
+4. python3 predict_angle.py (path to model wts) (path to img1) (path to img2)
+
+![inference_snippet](./inference_img.png)
 
 As per the our conversation over the email if we are sure the 
 ***FIRST Image or Reference Image is at ZERO degree then we can avoid the an extra argument(img2) I
