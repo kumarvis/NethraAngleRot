@@ -6,7 +6,7 @@
 
 #### Reproducing Dev environment
 - I have used Tensoflow2 framework with Anaconda setup. Please find the 
-[tf2_gpu.yml](https://github.com/kumarvis/NethraAngleRot/blob/main/tf2_gpu.yml) in repo to reproduce/export the environment.
+[tf2_gpu.yml](https://github.com/kumarvis/NethraAngleRot/blob/main/tf2_gpu.yml) in repo to reproduce/import the environment.
 
 #### Running Inference Script 
 
